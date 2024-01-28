@@ -1,0 +1,12 @@
+sudo yum install wget gcc zlib-devel bzip2 bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel libpcap-devel xz-devel
+sudo yum groupinstall "development tools"
+wget https://www.python.org/ftp/python/3.9.15/Python-3.9.15.tgz
+tar xzf Python-3.9.15.tgz
+cd Python-3.9.15
+./configure --enable-optimizations
+make altinstall
+python3.9 -V
+pip -V
+pip3 -V
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+python3.9 get-pip.py
