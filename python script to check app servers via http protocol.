@@ -1,0 +1,24 @@
+import requests
+
+# Define your server details
+app_servers = {
+    "app_server_1": {"ip_address": "10.10.0.20"},
+    "app_server_2": {"ip_address": "10.10.0.19"},
+    # Add more app servers as needed
+}
+
+# Check App Servers using HTTP
+print("\nApp Servers:")
+for hostname, server_info in app_servers.items():
+    print(f"\n{hostname} ({server_info['ip_address']}):")
+    
+    # Example: Check Docker containers count using the Nginx API endpoint
+    api_endpoint = f"http://{server_info['ip_address']}/api/docker/containers/count"
+    try:
+        response = requests.get(api_endpoint)
+        container_count = response.json().get("count", "Error retrieving count")
+        print(f"  - Docker Containers Running: {container_count}")
+    except Exception as e:
+        print(f"  - Error: {str(e)}")
+
+    # Add more checks for app servers using HTTP
